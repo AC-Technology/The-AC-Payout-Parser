@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Drag and Drop File Upload</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"
+        integrity="sha512-SGWgwwRA8xZgEoKiex3UubkSkV1zSE1BS6O4pXcaxcNtUlQsOmOmhVnDwIvqGRfEmuz83tIGL13cXMZn6upPyg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.3/xlsx.full.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"
+        integrity="sha512-LUKzDoJKOLqnxGWWIBM4lzRBlxcva2ZTztO8bTcWPmDSpkErWx0bSP4pdsjNH8kiHAUPaT06UXcb+vOEZH+HpQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+    <script src="https://live.zwidgets.com/js-sdk/1.1/ZohoEmbededAppSDK.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="CSS/index.css" />
+    <link rel="stylesheet" href="CSS/shared.css" />
+    <script src="JS/index.js"></script>
+    <script src="JS/load.js"></script>
+    <script src="JS/notification.js"></script>
+    <script src="JS/dragdrop.js"></script>
+    <script src="JS/submit.js"></script>
+    <script src="JS/resetfields.js"></script>
+
+</head>
+
+<body>
+    <div class="main-container flexed f-col">
+        <div class="title-container flexed f-center">
+            Payout Parser
+        </div>
+        <div class="top-container flexed f-center">
+            <!-- <h3 class = "text">Upload your File</h3> -->
+            <div class="drag-drop-container flexed f-center">
+                <div class="drag-area flexed f-center f-col" draggable="true">
+                    <input type="file" id="fileInput" hidden />
+                    <div class="icon">
+                        <i class="fas fa-file-csv"></i>
+                    </div>
+                    <span class="header1"> Drag & Drop</span>
+                    <span class="header2"> or </span>
+                    <span class="button"> browse</span>
+                    <span class="support"> Supports: CSV</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-container flexed f-center">
+            <div class="input-container-outer flexed f-center animate__animated animate__fadeInDown">
+                <div class="input-container-inner flexed f-col f-center">
+
+                    <div class="input-container" id="insurance_carrier_container">
+                        <strong>Select Insurance Carrier</strong>
+                        <select name="" class="select_only carrier-select" id="insurance_carrier">
+                            <option value="None">-Select-</option>
+                        </select>
+                    </div>
+
+                    <div class="input-container" id="payout_type_container">
+                        <strong>Select Payout Type</strong>
+                        <select name="" class="select_only payout-select" id="payout_type">
+                            <option value="None">-Select-</option>
+                            <option value="Quarterly">Quarterly</option>
+                            <option value="Annual">Annual</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="confirm-btn flexed f-center">
+            <img id="submit_skin_img" src="Assets/skip.svg" alt="" class="animate__animated animate__fadeInDown" />
+        </div>
+    
+        <div class="results-modal flexed f-col">
+            <div class="results-header-container flexed f-center">
+                <p class="results-text">Your file is being uploaded</p>
+            </div>
+            <div class="results-body-container flexed f-col f-center">
+                <img class="loading-gif" src="Assets\Dual-Ring-1s-200px.svg" alt="" srcset="">
+                <p class="loading-text">
+                    Uploading payout for...
+                </p>
+            </div>
+            <div class="close-modal-btn-container flexed f-center">
+                <div class="close-modal-btn flexed f-center">
+                    <p>Close</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="footer-logo flexed f-center">
+            Powered By
+            <img src="Assets/SiegeLogo.png">
+        </div>
+    </div>
+    <div id="notification" class="notification-modal success-modal flexed f-ac f-jb f-row animate__animated">
+        <!-- <img src="Assets/succes_modal_icon.svg" alt="" class="modal-img" /> -->
+        <p class="notification-modal-message">Notification Message Here</p>
+        <!-- <img class="close-icon modal-close" src="Assets/Exit.svg" alt="" /> -->
+    </div>
+</body>
+
+</html>
